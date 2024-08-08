@@ -14,7 +14,7 @@ const leagueRouter = require('./routes/leagues');
 const app = express();
 
 app.use(cors({
-  origin: 'http://15.237.190.127', // URL of your Angular app
+  origin: 'http://my-football-infos-test.s3-website-us-east-1.amazonaws.com', // URL of your Angular app
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type']
 }));
