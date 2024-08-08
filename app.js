@@ -3,6 +3,9 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
+const path = require('path');
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
 
 
 const indexRouter = require('./routes/index');
@@ -23,6 +26,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// Load the YAML OpenAPI document
+const swaggerDocument = YAML.load(path.join(__dirname, './docs/swagger.yaml'));
+
+// Set up the Swagger UI
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use('/', indexRouter);
 app.use('/players', playersRouter);
