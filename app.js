@@ -14,7 +14,7 @@ const leagueRouter = require('./routes/leagues');
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:4200', // URL of your Angular app
+  origin: 'http://15.237.190.127', // URL of your Angular app
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type']
 }));
